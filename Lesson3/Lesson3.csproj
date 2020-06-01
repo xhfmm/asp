@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8EE52759-0F0A-474E-92E6-A5A30DD4EE49}</ProjectGuid>
+    <ProjectGuid>{95646C0D-192C-4D22-BD36-828A1E42ACB0}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lesson1</RootNamespace>
-    <AssemblyName>Lesson1</AssemblyName>
+    <RootNamespace>Lesson3</RootNamespace>
+    <AssemblyName>Lesson3</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -67,27 +67,40 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="IsPostBackExample.aspx" />
-    <Content Include="Login.html" />
+    <Content Include="AddInfo.html" />
+    <Content Include="Edit.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IsPostBackExample.aspx.cs">
-      <DependentUpon>IsPostBackExample.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="AddInfo.ashx.cs">
+      <DependentUpon>AddInfo.ashx</DependentUpon>
     </Compile>
-    <Compile Include="IsPostBackExample.aspx.designer.cs">
-      <DependentUpon>IsPostBackExample.aspx</DependentUpon>
+    <Compile Include="Delete.ashx.cs">
+      <DependentUpon>Delete.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Login.ashx.cs">
-      <DependentUpon>Login.ashx</DependentUpon>
+    <Compile Include="EditHandler.ashx.cs">
+      <DependentUpon>EditHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="EditProcess.ashx.cs">
+      <DependentUpon>EditProcess.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ListHandler.ashx.cs">
+      <DependentUpon>ListHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShowDetailHandler.ashx.cs">
+      <DependentUpon>ShowDetailHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SQLHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Login.ashx" />
-    <Content Include="libman.json" />
+    <Content Include="ListHandler.ashx" />
+    <Content Include="AddInfo.ashx" />
+    <Content Include="Delete.ashx" />
+    <Content Include="EditHandler.ashx" />
+    <Content Include="EditProcess.ashx" />
     <None Include="packages.config" />
+    <Content Include="ShowDetailHandler.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -108,9 +121,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>24126</DevelopmentServerPort>
+          <DevelopmentServerPort>2403</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:24126/</IISUrl>
+          <IISUrl>http://localhost:2403/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

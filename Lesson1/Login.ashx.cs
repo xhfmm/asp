@@ -22,11 +22,10 @@ namespace Lesson1
             {
                 string name = context.Request.Form["name"];
                 string pwd = context.Request.Form["pwd"];
-                if (name == "tf" && pwd == "123")
+                if (name == "xhf" && pwd == "123456")
                     context.Response.Write("登录成功");
                 else
                 {
-                    context.Response.Write("登录失败");
                     html = html.Replace("@name", name).Replace("@msg","登录失败");
                     context.Response.Write(html);
                 }
