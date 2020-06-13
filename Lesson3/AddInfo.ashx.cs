@@ -14,7 +14,7 @@ namespace Lesson3
 
         public void ProcessRequest(HttpContext context)
         {
-            context.Response.ContentType = "text/htm!";
+            context.Response.ContentType = "text/html";
             //拿出所有的数据
             string name = context.Request.Form["name"];
             //int age;

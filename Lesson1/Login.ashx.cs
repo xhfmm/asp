@@ -23,7 +23,9 @@ namespace Lesson1
                 string name = context.Request.Form["name"];
                 string pwd = context.Request.Form["pwd"];
                 if (name == "xhf" && pwd == "123456")
+                {
                     context.Response.Write("登录成功");
+                }
                 else
                 {
                     html = html.Replace("@name", name).Replace("@msg","登录失败");
@@ -32,7 +34,7 @@ namespace Lesson1
             }
             else
             {
-                html = html.Replace("@name", "").Replace("@msg", "登录失败");
+                html = html.Replace("@name", "").Replace("@pwd", "").Replace("@msg", "");
                 context.Response.Write(html);
             }
                 

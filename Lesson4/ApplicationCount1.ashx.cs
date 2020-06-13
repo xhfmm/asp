@@ -3,44 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Lession2
+namespace Lesson4
 {
     /// <summary>
-    /// LoginHeadler 的摘要说明
+    /// ApplicationCount1 的摘要说明
     /// </summary>
-    public class LoginHandler : IHttpHandler
+    public class ApplicationCount1 : IHttpHandler
     {
 
         public void ProcessRequest(HttpContext context)
-        {            
-            //context.Response.ContentType = "text/plain";
-            string path = context.Request.MapPath("Login.html");
+        {
+            string path = context.Request.MapPath("ApplicationCount1.html");
             string html = System.IO.File.ReadAllText(path);
             string _vs = context.Request.Form["_viewstate"];
             bool ispostback = !string.IsNullOrEmpty(_vs);
             if (ispostback)
             {
-                string name = context.Request.Form["name"];
+                string name = context.Request.Form["username"];
                 string pwd = context.Request.Form["pwd"];
-                if (LoginSQL.Login(name,pwd))
+                if (name=="xhf" && pwd=="123456")
                 {
                     HttpCookie cookie = new HttpCookie("Login");
                     cookie.Values.Add("name", name);
                     cookie.Values["pwd"] = pwd;
                     cookie.Expires = System.DateTime.Now.AddDays(3);
                     context.Response.Cookies.Add(cookie);
+                    context.Response.Write("<h2>一般处理程序<h2>");
                     context.Response.Write("登录成功");
+                    context.Application.Lock();
+                    context.Application["Count"] = Convert.ToInt32(context.Application["Count"]) + 1;
+                    context.Application.UnLock();
+                    context.Response.Write("<br>您是第" + context.Application["Count"].ToString() + "位访问者");
                 }
                 else
                 {
-                    html = html.Replace("@name", name).Replace("@pwd","").Replace("@msg", "登录失败");
+                    html = html.Replace("@name", name).Replace("@pwd", "").Replace("@msg", "登录失败");
                     context.Response.Write(html);
                 }
             }
             else
             {
                 HttpCookie getcookie = context.Request.Cookies["Login"];
-                if(getcookie != null&& getcookie.HasKeys)
+                if (getcookie != null && getcookie.HasKeys)
                 {
                     string getname = getcookie["name"];
                     string getpwd = getcookie["pwd"];
@@ -53,6 +57,7 @@ namespace Lession2
                     context.Response.Write(html);
                 }
             }
+
         }
 
         public bool IsReusable
@@ -62,5 +67,6 @@ namespace Lession2
                 return false;
             }
         }
+
     }
 }
